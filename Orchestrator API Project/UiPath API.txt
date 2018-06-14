@@ -1,0 +1,116 @@
+Authenticating:-
+URL:-  https://platform.uipath.com/api/account/authenticate
+TYPE:- POST request
+Body:- {
+    "tenancyName" : "YourTenancyName",
+    "usernameOrEmailAddress" : "UserName",
+    "password" : "Password"
+}
+Response:- {
+    "result": "aGzaJm5Iju79ZXn0Om2HmVERxxoXVdB5cNBogjZDnmg301pnB-jgevNOTvWF7r9PwHxHiAzYcg-HAsBq9xTwBvMbGI20P1pG3vbXS7T4ZCMa_eAiqAMXQyTkSjl7ptR4N5iuAyP0M7cjhW8T9br-AUfBH1fgMbcyGYMk1wME4Y4gMjRcpK6EhAjvBZ8llRElAuP9m8gp8VMGKkcSoiigFp-uddA33pWOX1AFux-kkRWzU5d3u-AlBXA-CL7MB7gmTMeTc8LboEwa7CAfhivm3YTTPgKBB17XD-uT4tl4Xam0fesSjmIACW3KVjqI-PNm4TfA0zbxXxik1ZJc6Q-6fqH9VH69tHzQswPa0vP4VkHX5JUX3Hyq5Nvn4bBj7V4MzDdDMKj_lWCYF32k1Pqz9jlvr_v1QfXL9QBq2Gfrr_NDysbU0QzH0hf8IwdXuOSmisgH5mND_G_1-gF8KqmvnVTMXi9FPKV1mWwbd7Cw6LYAts7L1wRrEOvPghoZNC7i4GoZiB3sdINJOsU8ujy-kA",
+    "targetUrl": null,
+    "success": true,
+    "error": null,
+    "unAuthorizedRequest": false,
+    "__abp": true
+}
+
+************************************************************************
+Getting list of robots:-
+TYPE:- GET request
+URL:- https://platform.uipath.com/odata/Sessions?$top=10
+Header:- "Authorization" = "Bearer Result_of_step_one"
+Response:- {
+    "@odata.context": "https://platform.uipath.com/odata/$metadata#Sessions",
+    "@odata.count": 1,
+    "value": [
+        {
+            "State": "Available",
+            "ReportingTime": "2018-06-13T12:16:38.17Z",
+            "Info": null,
+            "IsUnresponsive": false,
+            "Id": 14468
+			14479
+        }
+    ]
+}
+
+*************************************************************************
+Releases
+TYPE:- GET Request
+URL:- https://platform.uipath.com/odata/Releases 
+Header:- same
+Reponse:- {
+    "@odata.context": "https://platform.uipath.com/odata/$metadata#Releases",
+    "@odata.count": 5,
+    "value": [
+        {
+            "Key": "5774ab5d-2937-4817-98df-a11f602fa68f",
+            "ProcessKey": "deploy",
+            "ProcessVersion": "1.0.6631.17448",
+            "IsLatestVersion": false,
+            "IsProcessDeleted": false,
+            "Description": "Open notepad and type something",
+            "Name": "deploy_Framework check",
+            "EnvironmentId": 9214,
+            "EnvironmentName": "Framework check",
+            "Id": 12571
+        },
+        {
+            "Key": "4b615fda-a6d7-4df5-8662-9d45c01f5286",
+            "ProcessKey": "Intro",
+            "ProcessVersion": "1.0.6641.28550",
+            "IsLatestVersion": false,
+            "IsProcessDeleted": false,
+            "Description": null,
+            "Name": "Intro_New Check",
+            "EnvironmentId": 9998,
+            "EnvironmentName": "New Check",
+            "Id": 13632
+        },
+        {
+            "Key": "4ebd5408-8cea-49ae-b10d-64da97dd5b1d",
+            "ProcessKey": "LearningRE",
+            "ProcessVersion": "1.0.6661.43097",
+            "IsLatestVersion": false,
+            "IsProcessDeleted": false,
+            "Description": null,
+            "Name": "LearningRE_RobotCheck",
+            "EnvironmentId": 11658,
+            "EnvironmentName": "RobotCheck",
+            "Id": 15968
+        },
+        {
+            "Key": "422b05e8-97ed-4b89-b804-7bebdca5ebd0",
+            "ProcessKey": "RobotMakesRobot",
+            "ProcessVersion": "1.0.6662.46",
+            "IsLatestVersion": false,
+            "IsProcessDeleted": false,
+            "Description": null,
+            "Name": "RobotMakesRobot_RobotCheck",
+            "EnvironmentId": 11658,
+            "EnvironmentName": "RobotCheck",
+            "Id": 15970
+        }
+    ]
+}
+
+******************************************************************************
+The ReleaseKey is not the robot key but it is the project key that we get by calling release key.
+The release key for a particular project does not changes.
+
+Starting the Robot
+URL:-  https://platform.uipath.com/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs
+TYPE:- POST request
+Body:- {
+  "startInfo": {
+    "ReleaseKey": "5774ab5d-2937-4817-98df-a11f602fa68f",
+    "Strategy": "Specific",
+    "RobotIds": [
+     14479		
+     ],
+    "NoOfRobots": 0
+  }
+}
+Response:- 
+
