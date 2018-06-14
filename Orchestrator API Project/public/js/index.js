@@ -2,9 +2,9 @@ $(document).ready(function() {
   $("#uipathButton").click(function() {
 
     var params = {
-      "tenancyName": "NikhilAshodariya1",
-      "usernameOrEmailAddress": "admin",
-      "password": "Bhai@123"
+      "tenancyName": "YourTenancyName",
+      "usernameOrEmailAddress": "UserName",
+      "password": "Password"
     };
 
     $.ajax({
